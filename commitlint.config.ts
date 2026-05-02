@@ -1,4 +1,4 @@
-export default {
+const config = {
   extends: ["@commitlint/config-conventional"],
   prompt: {
     useEmoji: true,
@@ -18,3 +18,5 @@ export default {
     ],
   },
 };
+
+export default config;
