@@ -1,5 +1,5 @@
 import { PrismaClient } from "../lib/generated/prisma";
-import { books } from "../lib/books";
+import { books } from "./data/books";
 
 const prisma = new PrismaClient();
 

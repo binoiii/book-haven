@@ -2,11 +2,11 @@ import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { toast } from "sonner";
 import { BookCard } from "./BookCard";
-import { addToCartAction } from "@/actions/cartActions";
+import { addToCartAction } from "@/server/actions/cartActions";
 import { useCartStore } from "@/store/cartStore";
 import { mockBook, outOfStockBook } from "@/__fixtures__/books";
 
-jest.mock("@/actions/cartActions", () => ({
+jest.mock("@/server/actions/cartActions", () => ({
   addToCartAction: jest.fn(),
 }));
 

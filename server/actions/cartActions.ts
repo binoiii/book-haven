@@ -1,6 +1,6 @@
 "use server";
 
-import { prisma } from "@/lib/db";
+import { prisma } from "@/server/db";
 
 export async function addToCartAction(
   bookId: number,

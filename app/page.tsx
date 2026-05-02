@@ -1,4 +1,4 @@
-import { prisma } from "@/lib/db";
+import { prisma } from "@/server/db";
 import { BookGrid } from "@/components/features/BookGrid";
 
 export default async function Home() {

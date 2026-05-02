@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { useCartStore } from "@/store/cartStore";
-import { addToCartAction } from "@/actions/cartActions";
+import { addToCartAction } from "@/server/actions/cartActions";
 import { UI } from "@/constants/ui";
 import type { Book } from "@/lib/generated/prisma";
 
