@@ -8,7 +8,7 @@ export function CartSummary() {
   return (
     <div className="flex justify-between border-t pt-4 text-lg font-bold">
       <span>Total</span>
-      <span>${total().toFixed(2)}</span>
+      <span data-testid="cart-total">${total().toFixed(2)}</span>
     </div>
   );
 }

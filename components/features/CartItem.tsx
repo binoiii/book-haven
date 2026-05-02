@@ -14,7 +14,7 @@ export function CartItem({ book, quantity }: CartItemProps) {
   const removeFromCart = useCartStore((state) => state.removeFromCart);
 
   return (
-    <div className="flex items-center justify-between gap-4 border-b py-4">
+    <div data-testid="cart-item" className="flex items-center justify-between gap-4 border-b py-4">
       <div className="flex flex-col gap-1">
         <p className="font-semibold">{book.title}</p>
         <p className="text-sm text-muted-foreground">{book.author}</p>
