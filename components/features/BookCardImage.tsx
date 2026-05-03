@@ -11,9 +11,9 @@ type BookCardImageProps = {
   height?: number;
 };
 
-export function BookCardImage({ src, alt, width = 108, height = 180 }: BookCardImageProps) {
+export function BookCardImage({ src, alt, width = 90, height = 150 }: BookCardImageProps) {
   return (
-    <figure className="flex justify-center p-4">
+    <div className="flex justify-center p-3">
       <div className="relative">
         {/* Spine shadow */}
         <div
@@ -35,10 +35,10 @@ export function BookCardImage({ src, alt, width = 108, height = 180 }: BookCardI
           width={width}
           height={height}
           sizes={`${width}px`}
-          className="rounded-md border border-gray-300 object-contain"
+          className="rounded-md border border-transparent object-contain shadow-lg"
           style={{ width, height }}
         />
       </div>
-    </figure>
+    </div>
   );
 }
