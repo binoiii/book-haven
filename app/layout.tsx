@@ -3,6 +3,7 @@ import { DM_Sans, DM_Serif_Display } from "next/font/google";
 import { Toaster } from "@/components/ui/sonner";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+import { PageTransition } from "@/components/layout/PageTransition";
 import "./globals.css";
 
 const dmSans = DM_Sans({
@@ -30,7 +31,9 @@ export default function RootLayout({
     <html lang="en" className={`${dmSans.variable} ${dmSerifDisplay.variable} h-full antialiased`}>
       <body className="flex min-h-full flex-col bg-surface">
         <Header />
-        <main className="grow">{children}</main>
+        <main className="grow">
+          <PageTransition>{children}</PageTransition>
+        </main>
         <Toaster />
         <Footer />
       </body>
