@@ -1,16 +1,37 @@
-"use client";
+'use client'
 
-export default function Error({ reset }: { reset: () => void }) {
+import { useEffect } from 'react'
+
+export default function Error({
+  error,
+  unstable_retry,
+}: {
+  error: Error & { digest?: string }
+  unstable_retry: () => void
+}) {
+  useEffect(() => {
+    console.error(error)
+  }, [error])
+
   return (
-    <main className="mx-auto flex w-full max-w-6xl flex-col items-center justify-center px-4 py-32 text-center">
-      <h2 className="mb-2 text-2xl font-bold">Something went wrong</h2>
-      <p className="mb-6 text-muted-foreground">We couldn&apos;t load the books. Please try again.</p>
+    <div className="mx-auto flex w-full max-w-6xl flex-col items-center justify-center px-4 py-24 text-center">
+      <h2 className="font-serif text-3xl font-semibold text-gray-900 sm:text-4xl">
+        Something went <span className="text-orange-400">wrong</span>
+      </h2>
+      <p className="mt-4 text-gray-500">
+        An unexpected error occurred. Try again or come back later.
+      </p>
+      {error.digest && (
+        <p className="mt-2 font-mono text-xs text-gray-400">
+          Error ID: {error.digest}
+        </p>
+      )}
       <button
-        onClick={reset}
-        className="rounded-md bg-black px-4 py-2 text-sm font-medium text-white hover:bg-black/80"
+        onClick={unstable_retry}
+        className="mt-8 rounded-full bg-gray-900 px-6 py-2.5 text-sm font-medium text-white transition hover:bg-gray-700"
       >
         Try again
       </button>
-    </main>
-  );
+    </div>
+  )
 }
