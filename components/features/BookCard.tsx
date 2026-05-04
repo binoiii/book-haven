@@ -9,6 +9,7 @@ import { UI } from "@/constants/ui";
 import type { Book } from "@/lib/generated/prisma";
 import type { CARD_COLORS } from "@/constants/ui";
 import { BookCardImage } from "./BookCardImage";
+import { StockBadge } from "./StockBadge";
 
 export type CardColor = (typeof CARD_COLORS)[number];
 
@@ -38,6 +39,9 @@ export function BookCard({ book, cardColor }: BookCardProps) {
       }}
     >
       <div className="pointer-events-none absolute -top-8 -right-8 h-36 w-36 rounded-full bg-white/10" />
+
+      <StockBadge stock={book.stock} />
+
       <BookCardImage src={book.cover} alt={book.title} />
       <div className="pointer-events-none h-4 bg-gradient-to-b from-transparent to-white/5" />
 
