@@ -19,7 +19,7 @@ export function CartContent() {
         <div className="flex flex-col gap-1">
           <p className="font-serif text-xl font-semibold text-gray-900">{UI.CART_EMPTY}</p>
           <p className="text-muted-foreground text-sm">
-            Browse our collection and find your next read.
+            {UI.CART_EMPTY_SUBTITLE}
           </p>
         </div>
         <Link

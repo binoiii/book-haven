@@ -3,6 +3,7 @@ export const UI = {
   OUT_OF_STOCK: "Out of Stock",
   REMOVE: "Remove",
   CART_EMPTY: "Your cart is empty",
+  CART_EMPTY_SUBTITLE: "Browse our collection and find your next read.",
   CART_TITLE: "Your Cart",
   BACK_TO_SHOP: "Continue Shopping",
   SEARCH_PLACEHOLDER: "Search",
