@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { DM_Sans, DM_Serif_Display } from "next/font/google";
 import { Toaster } from "@/components/ui/sonner";
 import { Header } from "@/components/layout/Header";
+import { Footer } from "@/components/layout/Footer";
 import "./globals.css";
 
 const dmSans = DM_Sans({
@@ -27,10 +28,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${dmSans.variable} ${dmSerifDisplay.variable} h-full antialiased`}>
-      <body className="flex min-h-full flex-col bg-[#f5f5f7]">
+      <body className="flex min-h-full flex-col bg-surface">
         <Header />
-        {children}
+        <main className="grow">{children}</main>
         <Toaster />
+        <Footer />
       </body>
     </html>
   );
