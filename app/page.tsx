@@ -10,7 +10,7 @@ export default function Home() {
         <h2 className="font-serif text-3xl leading-[30px] font-semibold text-gray-900 sm:text-4xl/9 md:text-5xl/12">
           Let&apos;s start your <span className="text-orange-400">next chapter</span>
           <br />
-          today.
+          today
         </h2>
       </div>
       <Suspense fallback={<BookGridSkeleton />}>
