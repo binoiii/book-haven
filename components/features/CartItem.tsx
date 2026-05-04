@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { Trash2 } from "lucide-react";
 import { useCart } from "@/hooks/useCart";
 import type { Book } from "@/lib/generated/prisma";
 
@@ -65,7 +64,7 @@ export function CartItem({ book, quantity }: CartItemProps) {
               +
             </button>
           </div>
-          {confirming ? (
+          {confirming && (
             <div role="alert" className="flex items-center gap-2 text-xs text-muted-foreground">
               <span>Remove item?</span>
               <button
@@ -81,15 +80,6 @@ export function CartItem({ book, quantity }: CartItemProps) {
                 No
               </button>
             </div>
-          ) : (
-            <button
-              onClick={() => setConfirming(true)}
-              aria-label="Remove item"
-              className="text-muted-foreground flex items-center gap-1 text-xs transition-colors hover:text-orange-500"
-            >
-              <Trash2 className="h-3 w-3" />
-              <span className="mt-[2px]">Remove</span>
-            </button>
           )}
         </div>
       </div>
