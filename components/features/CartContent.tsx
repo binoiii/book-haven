@@ -36,11 +36,6 @@ export function CartContent() {
         <CartItem key={book.id} book={book} quantity={quantity} />
       ))}
       <CartSummary />
-      <div className="pt-5">
-        <Link href="/" className="text-sm text-muted-foreground transition-colors hover:text-orange-500">
-          ← {UI.BACK_TO_SHOP}
-        </Link>
-      </div>
     </div>
   );
 }
