@@ -31,9 +31,9 @@ export default function RootLayout({
     <html lang="en" className={`${dmSans.variable} ${dmSerifDisplay.variable} h-full antialiased`}>
       <body className="flex min-h-full flex-col bg-surface">
         <Header />
-        <main className="grow">
+        <div className="grow">
           <PageTransition>{children}</PageTransition>
-        </main>
+        </div>
         <Toaster />
         <Footer />
       </body>

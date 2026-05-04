@@ -1,5 +1,3 @@
-import { Logo } from "@/components/layout/Logo";
-
 export function Footer() {
   return (
     <footer className="bg-surface border-t">
