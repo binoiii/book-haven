@@ -2,13 +2,13 @@
 
 import Link from "next/link";
 import { BookOpen } from "lucide-react";
-import { useCartStore } from "@/store/cartStore";
+import { useCart } from "@/hooks/useCart";
 import { CartItem } from "@/components/features/CartItem";
 import { CartSummary } from "@/components/features/CartSummary";
 import { UI } from "@/constants/ui";
 
 export function CartContent() {
-  const items = useCartStore((state) => state.items);
+  const { items } = useCart();
 
   if (items.length === 0) {
     return (

@@ -2,12 +2,11 @@
 
 import Link from "next/link";
 import { ShoppingBag } from "lucide-react";
-import { useCartStore } from "@/store/cartStore";
+import { useCart } from "@/hooks/useCart";
 import { Logo } from "@/components/layout/Logo";
 
 export function Header() {
-  const items = useCartStore((state) => state.items);
-  const count = items.reduce((sum, item) => sum + item.quantity, 0);
+  const { itemCount: count } = useCart();
 
   return (
     <header className="sticky top-0 z-100 border-b bg-surface">

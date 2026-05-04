@@ -1,10 +1,10 @@
 "use client";
 
 import { ShoppingBag } from "lucide-react";
-import { useCartStore } from "@/store/cartStore";
+import { useCart } from "@/hooks/useCart";
 
 export function CartSummary() {
-  const total = useCartStore((state) => state.total);
+  const { total } = useCart();
 
   return (
     <div className="mt-2 border-t border-border pt-5">

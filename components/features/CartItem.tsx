@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import { Trash2 } from "lucide-react";
-import { useCartStore } from "@/store/cartStore";
+import { useCart } from "@/hooks/useCart";
 import type { Book } from "@/lib/generated/prisma";
 
 type CartItemProps = {
@@ -13,8 +13,7 @@ type CartItemProps = {
 
 export function CartItem({ book, quantity }: CartItemProps) {
   const [confirming, setConfirming] = useState(false);
-  const removeFromCart = useCartStore((state) => state.removeFromCart);
-  const updateQuantity = useCartStore((state) => state.updateQuantity);
+  const { removeFromCart, updateQuantity } = useCart();
 
   function handleDecrement() {
     if (quantity === 1) {

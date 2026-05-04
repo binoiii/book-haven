@@ -3,7 +3,7 @@
 import { toast } from "sonner";
 import { ShoppingBag } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
-import { useCartStore } from "@/store/cartStore";
+import { useCart } from "@/hooks/useCart";
 import { addToCartAction } from "@/server/actions/cartActions";
 import { UI } from "@/constants/ui";
 import type { Book } from "@/lib/generated/prisma";
@@ -19,7 +19,7 @@ type BookCardProps = {
 };
 
 export function BookCard({ book, cardColor }: BookCardProps) {
-  const { addToCart, removeFromCart } = useCartStore();
+  const { addToCart, removeFromCart } = useCart();
   const isOutOfStock = book.stock === 0;
 
   async function handleAddToCart() {
