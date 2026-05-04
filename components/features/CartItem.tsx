@@ -24,8 +24,8 @@ export function CartItem({ book, quantity }: CartItemProps) {
   }
 
   return (
-    <div data-testid="cart-item" className="border-border flex items-center gap-4 border-b py-5">
-      <div className="relative h-20 w-13 flex-shrink-0 overflow-hidden rounded-md shadow-md">
+    <div data-testid="cart-item" className="border-border flex items-center gap-2 border-b py-4 sm:gap-4 sm:py-5">
+      <div className="relative h-16 w-10 flex-shrink-0 overflow-hidden rounded-md shadow-md sm:h-20 sm:w-13">
         <Image
           src={book.cover}
           alt={`Cover of ${book.title}`}
@@ -36,7 +36,7 @@ export function CartItem({ book, quantity }: CartItemProps) {
       </div>
 
       <div className="flex flex-1 flex-col gap-0.5">
-        <p className="font-serif text-base leading-tight font-semibold text-gray-900">
+        <p className="line-clamp-2 font-serif text-sm leading-tight font-semibold text-gray-900 sm:text-base">
           {book.title}
         </p>
         <p className="text-muted-foreground text-xs">{book.author}</p>
@@ -93,7 +93,7 @@ export function CartItem({ book, quantity }: CartItemProps) {
         </div>
       </div>
 
-      <p className="font-serif text-base font-bold text-gray-900">
+      <p className="font-serif text-sm font-bold text-gray-900 sm:text-base">
         ${(book.price * quantity).toFixed(2)}
       </p>
     </div>

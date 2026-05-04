@@ -21,12 +21,12 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-100 border-b bg-surface">
-      <div className="mx-auto flex max-w-6xl items-center gap-4 px-4 py-4">
+      <div className="mx-auto flex max-w-6xl items-center gap-2 px-4 py-4 sm:gap-4">
         <Link href="/" className="shrink-0">
           <Logo />
         </Link>
         {isHome && (
-          <div className="ml-auto w-full max-w-xs">
+          <div className="ml-auto w-full max-w-[180px] sm:max-w-xs">
             <SearchInput value={query} onChange={setQuery} />
           </div>
         )}

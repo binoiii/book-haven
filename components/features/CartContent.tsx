@@ -12,7 +12,7 @@ export function CartContent() {
 
   if (items.length === 0) {
     return (
-      <div className="flex flex-col items-center justify-center gap-5 py-32 text-center">
+      <div className="flex flex-col items-center justify-center gap-5 py-16 text-center sm:py-32">
         <div className="flex h-16 w-16 items-center justify-center rounded-full bg-orange-50">
           <BookOpen className="h-7 w-7 text-orange-400" />
         </div>

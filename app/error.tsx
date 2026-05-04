@@ -14,7 +14,7 @@ export default function Error({
   }, [error])
 
   return (
-    <div className="mx-auto flex w-full max-w-6xl flex-col items-center justify-center px-4 py-24 text-center">
+    <div className="mx-auto flex w-full max-w-6xl flex-col items-center justify-center px-4 py-12 text-center sm:py-24">
       <h2 className="font-serif text-3xl font-semibold text-gray-900 sm:text-4xl">
         Something went <span className="text-orange-400">wrong</span>
       </h2>

@@ -8,7 +8,7 @@ type BookGridProps = {
 
 export function BookGrid({ books }: BookGridProps) {
   return (
-    <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
+    <div className="grid grid-cols-2 gap-2 sm:gap-4 sm:grid-cols-3 lg:grid-cols-4">
       {books.map((book, index) => (
         <BookCard key={book.id} book={book} cardColor={CARD_COLORS[index % CARD_COLORS.length]} />
       ))}
