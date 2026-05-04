@@ -1,13 +1,11 @@
 export const UI = {
   ADD_TO_CART: "Add to Cart",
   OUT_OF_STOCK: "Out of Stock",
-  REMOVE: "Remove",
   CART_EMPTY: "Your cart is empty",
   CART_EMPTY_SUBTITLE: "Browse our collection and find your next read.",
   CART_TITLE: "Your Cart",
   BACK_TO_SHOP: "Continue Shopping",
   SEARCH_PLACEHOLDER: "Search",
-  NO_RESULTS: "No books match your search.",
 } as const;
 
 export const CARD_COLORS = [
