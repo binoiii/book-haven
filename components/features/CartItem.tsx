@@ -58,8 +58,9 @@ export function CartItem({ book, quantity }: CartItemProps) {
             </span>
             <button
               onClick={() => updateQuantity(book.id, quantity + 1)}
+              disabled={quantity >= book.stock}
               aria-label="Increase quantity"
-              className="text-muted-foreground flex h-5 w-5 items-center justify-center rounded-full transition-colors hover:bg-gray-100 hover:text-gray-900"
+              className="text-muted-foreground flex h-5 w-5 items-center justify-center rounded-full transition-colors hover:bg-gray-100 hover:text-gray-900 disabled:cursor-not-allowed disabled:opacity-40"
             >
               +
             </button>

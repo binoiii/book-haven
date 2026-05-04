@@ -19,14 +19,22 @@ type BookCardProps = {
 };
 
 export function BookCard({ book, cardColor }: BookCardProps) {
-  const { addToCart, removeFromCart } = useCart();
+  const { addToCart, updateQuantity, items } = useCart();
   const isOutOfStock = book.stock === 0;
 
   async function handleAddToCart() {
+    const existing = items.find((i) => i.book.id === book.id);
+    const newQuantity = (existing?.quantity ?? 0) + 1;
+
+    if (newQuantity > book.stock) {
+      toast.error(`Only ${book.stock} in stock`);
+      return;
+    }
+
     addToCart(book);
-    const result = await addToCartAction(book.id);
+    const result = await addToCartAction(book.id, newQuantity);
     if (!result.success) {
-      removeFromCart(book.id);
+      updateQuantity(book.id, newQuantity - 1);
       toast.error(result.message);
     }
   }

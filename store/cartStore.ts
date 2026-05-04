@@ -24,6 +24,7 @@ export const useCartStore = create<CartStore>()(
         set((state) => {
           const existing = state.items.find((i) => i.book.id === book.id);
           if (existing) {
+            if (existing.quantity >= book.stock) return state;
             return {
               items: state.items.map((i) =>
                 i.book.id === book.id ? { ...i, quantity: i.quantity + 1 } : i,
@@ -37,11 +38,16 @@ export const useCartStore = create<CartStore>()(
           items: state.items.filter((i) => i.book.id !== id),
         })),
       updateQuantity: (id, quantity) =>
-        set((state) => ({
-          items: quantity <= 0
-            ? state.items.filter((i) => i.book.id !== id)
-            : state.items.map((i) => i.book.id === id ? { ...i, quantity } : i),
-        })),
+        set((state) => {
+          const item = state.items.find((i) => i.book.id === id);
+          if (!item) return state;
+          const capped = Math.min(quantity, item.book.stock);
+          return {
+            items: capped <= 0
+              ? state.items.filter((i) => i.book.id !== id)
+              : state.items.map((i) => i.book.id === id ? { ...i, quantity: capped } : i),
+          };
+        }),
       clearCart: () => set({ items: [] }),
       total: () =>
         get().items.reduce(
