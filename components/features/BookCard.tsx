@@ -46,7 +46,7 @@ export function BookCard({ book, cardColor }: BookCardProps) {
       <div className="pointer-events-none h-4 bg-gradient-to-b from-transparent to-white/5" />
 
       <CardContent className="flex flex-1 flex-col gap-1 bg-white/5 p-3">
-        <p className="font-roboto text-[9px] font-medium tracking-widest text-white/50 uppercase">
+        <p className="font-roboto text-[9px] font-medium tracking-widest text-white/70 uppercase">
           {book.sku}
         </p>
 
@@ -54,7 +54,7 @@ export function BookCard({ book, cardColor }: BookCardProps) {
           {book.title}
         </h2>
 
-        <p className="font-sans text-xs text-white/60 text-shadow-2xs">{book.author}</p>
+        <p className="font-sans text-xs text-white/80 text-shadow-2xs">{book.author}</p>
 
         <div className="mt-auto flex flex-col gap-2 pt-2 sm:flex-row sm:items-center sm:justify-between">
           <p className="font-serif text-base font-bold text-white text-shadow-2xs">
@@ -64,9 +64,10 @@ export function BookCard({ book, cardColor }: BookCardProps) {
           <button
             onClick={handleAddToCart}
             disabled={isOutOfStock}
+            aria-label={isOutOfStock ? `${book.title} is out of stock` : `Add ${book.title} to cart`}
             className={`flex h-[30px] w-full items-center justify-center gap-1 whitespace-nowrap rounded-full px-3 font-sans text-[11px] font-medium backdrop-blur-xl transition-all duration-200 active:scale-95 disabled:cursor-not-allowed sm:w-auto sm:justify-start ${
               isOutOfStock
-                ? "border border-white/15 bg-white/[0.06] text-white/35"
+                ? "border border-white/15 bg-white/[0.06] text-white/50"
                 : "border border-white/50 bg-white/[0.18] text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.42),inset_0_-1px_0_rgba(255,255,255,0.06)] hover:bg-white/30"
             } `}
           >

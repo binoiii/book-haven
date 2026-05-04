@@ -36,14 +36,14 @@ describe("BookCard", () => {
     expect(screen.getByText("BH-001")).toBeInTheDocument();
     expect(screen.getByText("$10.00")).toBeInTheDocument();
     expect(
-      screen.getByRole("button", { name: /add to cart/i }),
+      screen.getByRole("button", { name: /add the great gatsby to cart/i }),
     ).toBeInTheDocument();
   });
 
   it("shows Out of Stock badge and disabled button when stock === 0", () => {
     render(<BookCard book={outOfStockBook} cardColor={defaultColor} />);
-    expect(screen.getByText(/out of stock/i)).toBeInTheDocument();
-    expect(screen.getByRole("button", { name: /out of stock/i })).toBeDisabled();
+    expect(screen.getAllByText(/out of stock/i).length).toBeGreaterThan(0);
+    expect(screen.getByRole("button", { name: /is out of stock/i })).toBeDisabled();
   });
 
   it("rolls back Zustand update and shows toast when Server Action returns an error", async () => {
@@ -54,7 +54,7 @@ describe("BookCard", () => {
 
     const user = userEvent.setup();
     render(<BookCard book={mockBook} cardColor={defaultColor} />);
-    await user.click(screen.getByRole("button", { name: /add to cart/i }));
+    await user.click(screen.getByRole("button", { name: /add the great gatsby to cart/i }));
 
     await waitFor(() => {
       expect(useCartStore.getState().items).toHaveLength(0);

@@ -29,6 +29,13 @@ export function BookCatalogClient({ books }: BookCatalogClientProps) {
 
   return (
     <>
+      <span aria-live="polite" aria-atomic="true" className="sr-only">
+        {isFiltering
+          ? filtered.length === 0
+            ? `No books found for "${query.trim()}"`
+            : `${filtered.length} book${filtered.length === 1 ? "" : "s"} found`
+          : ""}
+      </span>
       <div className="mb-6 mt-8">
         <BrowseSectionHeader count={filtered.length} total={isFiltering ? books.length : undefined} />
       </div>

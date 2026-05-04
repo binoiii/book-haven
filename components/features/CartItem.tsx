@@ -41,7 +41,11 @@ export function CartItem({ book, quantity }: CartItemProps) {
         </p>
         <p className="text-muted-foreground text-xs">{book.author}</p>
         <div className="mt-2 flex items-center gap-3">
-          <div className="flex items-center gap-2 rounded-full border border-gray-200 px-2 py-0.5">
+          <div
+            role="group"
+            aria-label={`Quantity for ${book.title}`}
+            className="flex items-center gap-2 rounded-full border border-gray-200 px-2 py-0.5"
+          >
             <button
               onClick={handleDecrement}
               aria-label="Decrease quantity"
@@ -49,7 +53,7 @@ export function CartItem({ book, quantity }: CartItemProps) {
             >
               −
             </button>
-            <span className="w-4 text-center text-sm font-medium text-gray-900">
+            <span aria-live="polite" aria-atomic="true" className="w-4 text-center text-sm font-medium text-gray-900">
               {quantity}
             </span>
             <button
@@ -61,7 +65,7 @@ export function CartItem({ book, quantity }: CartItemProps) {
             </button>
           </div>
           {confirming ? (
-            <div className="flex items-center gap-2 text-xs text-muted-foreground">
+            <div role="alert" className="flex items-center gap-2 text-xs text-muted-foreground">
               <span>Remove item?</span>
               <button
                 onClick={() => removeFromCart(book.id)}
