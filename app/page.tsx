@@ -1,10 +1,8 @@
-import { prisma } from "@/server/db";
-import { BookGrid } from "@/components/features/BookGrid";
-import { BrowseSectionHeader } from "@/components/features/BrowseSectionHeader";
+import { Suspense } from "react";
+import { BookCatalog } from "@/components/features/BookCatalog";
+import { BookGridSkeleton } from "@/components/features/BookGridSkeleton";
 
-export default async function Home() {
-  const books = await prisma.book.findMany({ orderBy: { id: "asc" } });
-
+export default function Home() {
   return (
     <main className="mx-auto w-full max-w-6xl px-4 py-8">
       <div className="mb-4 md:mb-10">
@@ -15,8 +13,9 @@ export default async function Home() {
           today.
         </h2>
       </div>
-      <BrowseSectionHeader count={books.length} />
-      <BookGrid books={books} />
+      <Suspense fallback={<BookGridSkeleton />}>
+        <BookCatalog />
+      </Suspense>
     </main>
   );
 }
