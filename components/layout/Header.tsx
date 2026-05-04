@@ -16,7 +16,7 @@ export function Header() {
           <Logo />
         </Link>
         <Link href="/cart" className="relative flex items-center gap-2 text-sm font-medium">
-          <ShoppingBag className="h-6 w-6 text-gray-600" />
+          <ShoppingBag className="h-6 w-6 text-gray-900" />
           {count > 0 && (
             <span className="absolute -top-2 -right-3 flex min-w-5 items-center justify-center rounded-full bg-orange-500 px-1.5 py-0.5 text-[10px] leading-none font-medium text-white">
               {count > 99 ? "99+" : count}
