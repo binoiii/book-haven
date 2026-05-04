@@ -5,6 +5,8 @@ export const UI = {
   CART_EMPTY: "Your cart is empty",
   CART_TITLE: "Your Cart",
   BACK_TO_SHOP: "Continue Shopping",
+  SEARCH_PLACEHOLDER: "Search by title or author…",
+  NO_RESULTS: "No books match your search.",
 } as const;
 
 export const CARD_COLORS = [
