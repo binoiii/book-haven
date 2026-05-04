@@ -1,10 +1,10 @@
 "use client";
 
 import Link from "next/link";
+import { BookOpen } from "lucide-react";
 import { useCartStore } from "@/store/cartStore";
 import { CartItem } from "@/components/features/CartItem";
 import { CartSummary } from "@/components/features/CartSummary";
-import { Button } from "@/components/ui/button";
 import { UI } from "@/constants/ui";
 
 export function CartContent() {
@@ -12,25 +12,34 @@ export function CartContent() {
 
   if (items.length === 0) {
     return (
-      <div className="flex flex-col items-center justify-center gap-4 py-32 text-center">
-        <p className="text-xl font-semibold">{UI.CART_EMPTY}</p>
-        <Button asChild variant="outline">
-          <Link href="/">{UI.BACK_TO_SHOP}</Link>
-        </Button>
+      <div className="flex flex-col items-center justify-center gap-5 py-32 text-center">
+        <div className="flex h-16 w-16 items-center justify-center rounded-full bg-orange-50">
+          <BookOpen className="h-7 w-7 text-orange-400" />
+        </div>
+        <div className="flex flex-col gap-1">
+          <p className="font-serif text-xl font-semibold text-gray-900">{UI.CART_EMPTY}</p>
+          <p className="text-sm text-muted-foreground">Browse our collection and find your next read.</p>
+        </div>
+        <Link
+          href="/"
+          className="rounded-full bg-orange-500 px-6 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-orange-600"
+        >
+          {UI.BACK_TO_SHOP}
+        </Link>
       </div>
     );
   }
 
   return (
-    <div className="flex flex-col gap-4">
+    <div className="flex flex-col">
       {items.map(({ book, quantity }) => (
         <CartItem key={book.id} book={book} quantity={quantity} />
       ))}
       <CartSummary />
-      <div className="pt-2">
-        <Button asChild variant="outline">
-          <Link href="/">{UI.BACK_TO_SHOP}</Link>
-        </Button>
+      <div className="pt-5">
+        <Link href="/" className="text-sm text-muted-foreground transition-colors hover:text-orange-500">
+          ← {UI.BACK_TO_SHOP}
+        </Link>
       </div>
     </div>
   );
