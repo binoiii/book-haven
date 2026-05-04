@@ -11,6 +11,7 @@ type CartStore = {
   items: CartItem[];
   addToCart: (book: Book) => void;
   removeFromCart: (id: number) => void;
+  updateQuantity: (id: number, quantity: number) => void;
   clearCart: () => void;
   total: () => number;
 };
@@ -34,6 +35,12 @@ export const useCartStore = create<CartStore>()(
       removeFromCart: (id) =>
         set((state) => ({
           items: state.items.filter((i) => i.book.id !== id),
+        })),
+      updateQuantity: (id, quantity) =>
+        set((state) => ({
+          items: quantity <= 0
+            ? state.items.filter((i) => i.book.id !== id)
+            : state.items.map((i) => i.book.id === id ? { ...i, quantity } : i),
         })),
       clearCart: () => set({ items: [] }),
       total: () =>
