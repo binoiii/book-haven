@@ -54,6 +54,15 @@ An online bookshop built with Next.js 16, PostgreSQL, Prisma, Zustand, and Tailw
 - **pnpm** 9+
 - **Docker** + Docker Compose (for the database)
 
+> ⚠️ **Linux/WSL users:** If you see Docker permission errors, run:
+>
+> ```bash
+> sudo usermod -aG docker $USER
+> newgrp docker
+> ```
+>
+> Then restart your terminal session.
+
 ---
 
 ## Getting Started
@@ -101,7 +110,13 @@ pnpm exec prisma migrate deploy
 
 This applies the migration in `prisma/migrations/` and creates the `Book` table.
 
-### 5. Seed the database
+### 5. Generate Prisma Client
+
+```bash
+pnpm exec prisma generate
+```
+
+### 6. Seed the database
 
 ```bash
 pnpm exec prisma db seed
@@ -109,7 +124,13 @@ pnpm exec prisma db seed
 
 Seeds the database with the book catalogue from `prisma/data/books.ts` using upsert — safe to run multiple times.
 
-### 6. Start the development server
+### 7. View the database (Prisma Studio)
+
+```bash
+pnpm exec prisma studio
+```
+
+### 8. Start the development server
 
 ```bash
 pnpm dev

@@ -12,6 +12,9 @@
     "commit": "git-cz",
     "prepare": "husky"
   },
+  "prisma": {
+    "seed": "tsx prisma/seed.ts"
+  },
   "config": {
     "commitizen": {
       "path": "node_modules/cz-git"
