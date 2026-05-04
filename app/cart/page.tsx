@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ArrowLeft } from "lucide-react";
 import { CartContent } from "@/components/features/CartContent";
 import { UI } from "@/constants/ui";
 
@@ -10,8 +11,8 @@ export default function CartPage() {
           <p className="mb-1 text-xs font-medium tracking-widest text-orange-400 uppercase">Review</p>
           <h1 className="font-serif text-2xl font-semibold text-gray-900">{UI.CART_TITLE}</h1>
         </div>
-        <Link href="/" className="text-sm text-muted-foreground transition-colors hover:text-orange-500">
-          ← {UI.BACK_TO_SHOP}
+        <Link href="/" className="flex items-center gap-1 text-sm text-muted-foreground transition-colors hover:text-orange-500">
+          <ArrowLeft className="h-4 w-4" />{UI.BACK_TO_SHOP}
         </Link>
       </div>
       <CartContent />
