@@ -6,14 +6,14 @@ An online bookshop built with Next.js 16, PostgreSQL, Prisma, Zustand, and Tailw
 
 ## Tech Stack
 
-| Layer | Choice |
-|---|---|
-| Framework | Next.js 16 (App Router) |
-| Database | PostgreSQL 16 (Docker) |
-| ORM | Prisma 6 |
-| State | Zustand 5 with `persist` middleware |
-| Styling | Tailwind CSS 4 + shadcn/ui |
-| Testing | Jest 30 + React Testing Library |
+| Layer     | Choice                              |
+| --------- | ----------------------------------- |
+| Framework | Next.js 16 (App Router)             |
+| Database  | PostgreSQL 16 (Docker)              |
+| ORM       | Prisma 6                            |
+| State     | Zustand 5 with `persist` middleware |
+| Styling   | Tailwind CSS 4 + shadcn/ui          |
+| Testing   | Jest 30 + React Testing Library     |
 
 ---
 
@@ -106,19 +106,19 @@ pnpm exec jest -t "adds a new book"
 
 ### Test suite overview
 
-| # | Test | File | Type |
-|---|---|---|---|
-| 1 | `addToCart` adds a new book to the store | `store/cartStore.test.ts` | Unit |
-| 2 | `addToCart` increments quantity for a duplicate book | `store/cartStore.test.ts` | Unit |
-| 3 | `removeFromCart` removes a book by id | `store/cartStore.test.ts` | Unit |
-| 4 | Cart total is correct for multiple items with quantities | `store/cartStore.test.ts` | Unit |
-| 5 | `BookCard` renders title, author, price and Add to Cart button | `components/features/BookCard.test.tsx` | Component |
-| 6 | `BookCard` shows Out of Stock badge and disabled button when `stock === 0` | `components/features/BookCard.test.tsx` | Component |
-| 7 | `BookCard` rolls back Zustand update and shows toast on server error | `components/features/BookCard.test.tsx` | Integration |
-| 8 | Cart page shows empty state when cart has no items | `components/features/CartContent.test.tsx` | Component |
-| 9 | Cart page renders all cart items with correct line totals and cart total | `components/features/CartContent.test.tsx` | Component |
-| 10 | Header shows the correct cart item count | `components/layout/Header.test.tsx` | Component |
-| 11 | Cart state is persisted to `localStorage` and rehydrated on remount | `store/cartStore.test.ts` | Integration |
+| #   | Test                                                                       | File                                       | Type        |
+| --- | -------------------------------------------------------------------------- | ------------------------------------------ | ----------- |
+| 1   | `addToCart` adds a new book to the store                                   | `store/cartStore.test.ts`                  | Unit        |
+| 2   | `addToCart` increments quantity for a duplicate book                       | `store/cartStore.test.ts`                  | Unit        |
+| 3   | `removeFromCart` removes a book by id                                      | `store/cartStore.test.ts`                  | Unit        |
+| 4   | Cart total is correct for multiple items with quantities                   | `store/cartStore.test.ts`                  | Unit        |
+| 5   | `BookCard` renders title, author, SKU, price and Add to Cart button        | `components/features/BookCard.test.tsx`    | Component   |
+| 6   | `BookCard` shows Out of Stock badge and disabled button when `stock === 0` | `components/features/BookCard.test.tsx`    | Component   |
+| 7   | `BookCard` rolls back Zustand update and shows toast on server error       | `components/features/BookCard.test.tsx`    | Integration |
+| 8   | Cart page shows empty state when cart has no items                         | `components/features/CartContent.test.tsx` | Component   |
+| 9   | Cart page renders all cart items with correct line totals and cart total   | `components/features/CartContent.test.tsx` | Component   |
+| 10  | Header shows the correct cart item count                                   | `components/layout/Header.test.tsx`        | Component   |
+| 11  | Cart state is persisted to `localStorage` and rehydrated on remount        | `store/cartStore.test.ts`                  | Integration |
 
 ---
 
@@ -127,7 +127,7 @@ pnpm exec jest -t "adds a new book"
 ```
 app/
   page.tsx                  # Homepage — SSR, fetches books from DB
-  cart/page.tsx             # Cart page — client-rendered from Zustand
+  cart/page.tsx             # Cart page — Server Component shell, content client-rendered from Zustand
   layout.tsx                # Root layout (Header + Footer)
   loading.tsx               # Suspense fallback for homepage
   error.tsx                 # Error boundary for homepage
@@ -139,21 +139,21 @@ components/
     BookCardImage.tsx       # Image subcomponent for BookCard
     BookCardSkeleton.tsx    # Loading skeleton for a single book card
     BookCatalog.tsx         # Server component — fetches and renders the book grid
-    BookCatalogClient.tsx   # Client wrapper for search/filter state
+    BookCatalogClient.tsx   # Client wrapper — server→client handoff for search/filter
     BookGrid.tsx            # Responsive grid layout for book cards
     BookGridSkeleton.tsx    # Loading skeleton for the full book grid
-    BrowseSectionHeader.tsx # Section heading + search input for the catalogue
+    BrowseSectionHeader.tsx # Section heading + result count for the catalogue
     CartContent.tsx         # Cart page container
     CartItem.tsx            # Individual cart row (quantity controls)
     CartSummary.tsx         # Cart total + checkout CTA
     SearchInput.tsx         # Controlled search/filter input
-    StockBadge.tsx          # "Out of Stock" badge shown on unavailable books
+    StockBadge.tsx          # Out of Stock / low stock badge
   layout/
     Header.tsx              # Site header with cart icon + item count
     Footer.tsx              # Site footer
     Logo.tsx                # BookHaven logo mark
     PageTransition.tsx      # Page-level transition wrapper
-  ui/                       # shadcn/ui primitives (Button, Badge, Card, Skeleton, Sonner)
+  ui/                       # shadcn/ui primitives (Badge, Card, Skeleton, Sonner)
 
 store/
   cartStore.ts              # Zustand cart store — add, remove, update quantity, total, persist
@@ -176,6 +176,10 @@ prisma/
   seed.ts                   # Upserts book catalogue
   data/books.ts             # Seed data
 
+docs/
+  ARCHITECTURE_DECISIONS.md # ADRs — framework, database, styling, state, testing, conventions
+  FIRST_PRINCIPLES.md       # Engineering standards and best practices
+
 constants/                  # Centralised UI strings and config
 types/                      # Shared TypeScript types
 __fixtures__/books.ts       # Mock Book objects for tests
@@ -185,9 +189,9 @@ __fixtures__/books.ts       # Mock Book objects for tests
 
 ## Key Architecture Decisions
 
-Full rationale for each decision is in `progress_notes/ARCHITECTURE_DECISIONS.md`.
+Full rationale for each decision is in `docs/ARCHITECTURE_DECISIONS.md`.
 
-**Next.js App Router** — Homepage uses SSR so book availability and stock levels are always fresh from the database. The cart page is client-rendered because cart state lives in `localStorage` via Zustand.
+**Next.js App Router** — Homepage uses SSR so book availability and stock levels are always fresh from the database. The cart page is a Server Component shell; its content (`CartContent`) is client-rendered because cart state lives in `localStorage` via Zustand.
 
 **Optimistic cart updates** — Clicking "Add to Cart" updates Zustand immediately for instant feedback, then a Server Action validates stock server-side. On failure the store is rolled back and a toast is shown.
 
@@ -199,15 +203,15 @@ Full rationale for each decision is in `progress_notes/ARCHITECTURE_DECISIONS.md
 
 ## Available Scripts
 
-| Script | Description |
-|---|---|
-| `pnpm dev` | Start Next.js development server |
-| `pnpm build` | Production build |
-| `pnpm start` | Start production server |
-| `pnpm lint` | Run ESLint |
-| `pnpm test` | Run Jest (all tests) |
-| `pnpm test:watch` | Run Jest in watch mode |
-| `pnpm commit` | Commitizen interactive commit prompt |
+| Script            | Description                          |
+| ----------------- | ------------------------------------ |
+| `pnpm dev`        | Start Next.js development server     |
+| `pnpm build`      | Production build                     |
+| `pnpm start`      | Start production server              |
+| `pnpm lint`       | Run ESLint                           |
+| `pnpm test`       | Run Jest (all tests)                 |
+| `pnpm test:watch` | Run Jest in watch mode               |
+| `pnpm commit`     | Commitizen interactive commit prompt |
 
 ---
 
