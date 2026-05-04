@@ -1,6 +1,37 @@
 # BookHaven
 
+<div align="center">
+
+![Next.js](https://img.shields.io/badge/Next.js_16-black?style=flat-square&logo=next.js&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS_4-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white)
+![Prisma](https://img.shields.io/badge/Prisma_6-2D3748?style=flat-square&logo=prisma&logoColor=white)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL_16-4169E1?style=flat-square&logo=postgresql&logoColor=white)
+![Jest](https://img.shields.io/badge/Jest_30-C21325?style=flat-square&logo=jest&logoColor=white)
+![License: MIT](https://img.shields.io/badge/License-MIT-yellow?style=flat-square)
+
+</div>
+
 An online bookshop built with Next.js 16, PostgreSQL, Prisma, Zustand, and Tailwind CSS.
+
+---
+
+## Screenshots
+
+<div align="center">
+  <table>
+    <tr>
+      <td align="center">
+        <img src="docs/screenshots/desktop-homepage.png" alt="Desktop" width="520" />
+        <br /><sub>Desktop</sub>
+      </td>
+      <td align="center">
+        <img src="docs/screenshots/mobile-homepage.png" alt="Mobile" width="200" />
+        <br /><sub>Mobile</sub>
+      </td>
+    </tr>
+  </table>
+</div>
 
 ---
 
@@ -233,3 +264,9 @@ docker compose down
 # Stop and delete all data
 docker compose down -v
 ```
+
+---
+
+## License
+
+MIT © [Albino III Cordova](https://github.com/binoiii)
