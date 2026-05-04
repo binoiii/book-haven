@@ -54,7 +54,7 @@ export function BookCard({ book, cardColor }: BookCardProps) {
       <div className="pointer-events-none h-4 bg-gradient-to-b from-transparent to-white/5" />
 
       <CardContent className="flex flex-1 flex-col gap-1 bg-white/5 p-3">
-        <p className="font-roboto text-[9px] font-medium tracking-widest text-white/70 uppercase">
+        <p className="font-sans text-xs font-medium tracking-widest text-white/70 uppercase">
           {book.sku}
         </p>
 
