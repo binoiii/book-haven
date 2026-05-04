@@ -10,7 +10,7 @@ export function Header() {
   const count = items.reduce((sum, item) => sum + item.quantity, 0);
 
   return (
-    <header className="bg sticky top-0 z-100 border-b bg-[#f5f5f7]">
+    <header className="sticky top-0 z-100 border-b bg-surface">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4">
         <Link href="/">
           <Logo />
