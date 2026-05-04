@@ -1,3 +1,5 @@
+import { Badge } from "@/components/ui/badge";
+
 type StockBadgeProps = {
   stock: number;
 };
@@ -5,17 +7,17 @@ type StockBadgeProps = {
 export function StockBadge({ stock }: StockBadgeProps) {
   if (stock === 0) {
     return (
-      <span className="absolute top-2 right-2 z-10 rounded-sm bg-black/50 px-2 py-0.5 font-sans text-[10px] font-medium text-white/80 backdrop-blur-sm">
+      <Badge className="absolute top-2 right-2 z-20 rounded-sm bg-black/50 pt-1 text-xs font-semibold text-white/80 backdrop-blur-sm">
         Out of Stock
-      </span>
+      </Badge>
     );
   }
 
   if (stock <= 5) {
     return (
-      <span className="absolute top-2 right-2 z-10 rounded-sm bg-orange-500 px-2 py-0.5 font-sans text-[10px] font-medium text-white">
+      <Badge className="absolute top-2 right-2 z-20 rounded-sm bg-orange-500 pt-1 text-xs font-semibold text-white">
         Only {stock} left
-      </span>
+      </Badge>
     );
   }
 
