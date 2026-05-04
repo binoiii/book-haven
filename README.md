@@ -126,43 +126,59 @@ pnpm exec jest -t "adds a new book"
 
 ```
 app/
-  page.tsx              # Homepage — SSR, fetches books from DB
-  cart/page.tsx         # Cart page — client-rendered from Zustand
-  layout.tsx            # Root layout (Header)
-  loading.tsx           # Suspense fallback for homepage
-  error.tsx             # Error boundary for homepage
+  page.tsx                  # Homepage — SSR, fetches books from DB
+  cart/page.tsx             # Cart page — client-rendered from Zustand
+  layout.tsx                # Root layout (Header + Footer)
+  loading.tsx               # Suspense fallback for homepage
+  error.tsx                 # Error boundary for homepage
+  global-error.tsx          # Root-level error boundary
 
 components/
-  features/             # Domain components
-    BookCard.tsx        # Book card with Add to Cart (optimistic update)
-    BookCatalog.tsx     # Server component — fetches and renders the book grid
-    CartContent.tsx     # Cart page container
-    CartItem.tsx        # Individual cart row (quantity controls)
-    CartSummary.tsx     # Cart total + checkout CTA
-    SearchInput.tsx     # Client-side search/filter input
+  features/                 # Domain components
+    BookCard.tsx            # Book card with Add to Cart (optimistic update)
+    BookCardImage.tsx       # Image subcomponent for BookCard
+    BookCardSkeleton.tsx    # Loading skeleton for a single book card
+    BookCatalog.tsx         # Server component — fetches and renders the book grid
+    BookCatalogClient.tsx   # Client wrapper for search/filter state
+    BookGrid.tsx            # Responsive grid layout for book cards
+    BookGridSkeleton.tsx    # Loading skeleton for the full book grid
+    BrowseSectionHeader.tsx # Section heading + search input for the catalogue
+    CartContent.tsx         # Cart page container
+    CartItem.tsx            # Individual cart row (quantity controls)
+    CartSummary.tsx         # Cart total + checkout CTA
+    SearchInput.tsx         # Controlled search/filter input
+    StockBadge.tsx          # "Out of Stock" badge shown on unavailable books
   layout/
-    Header.tsx          # Site header with cart icon + item count
-  ui/                   # shadcn/ui primitives (Button, Badge, Card, Skeleton, Sonner)
+    Header.tsx              # Site header with cart icon + item count
+    Footer.tsx              # Site footer
+    Logo.tsx                # BookHaven logo mark
+    PageTransition.tsx      # Page-level transition wrapper
+  ui/                       # shadcn/ui primitives (Button, Badge, Card, Skeleton, Sonner)
 
 store/
-  cartStore.ts          # Zustand store — add, remove, update quantity, total, persist
+  cartStore.ts              # Zustand cart store — add, remove, update quantity, total, persist
+  searchStore.ts            # Zustand search/filter store
 
 hooks/
-  useCart.ts            # Selector hook — exposes store to components
+  useCart.ts                # Selector hook — exposes cart store to components
 
 server/
-  db.ts                 # Prisma client singleton
+  db.ts                     # Prisma client singleton
   actions/
-    cartActions.ts      # Server Action — validates stock before confirming add to cart
+    cartActions.ts          # Server Action — validates stock before confirming add to cart
+
+lib/
+  utils.ts                  # Tailwind class merge utility (cn)
 
 prisma/
-  schema.prisma         # Book model
-  migrations/           # Versioned SQL migrations
-  seed.ts               # Upserts book catalogue
-  data/books.ts         # Seed data
+  schema.prisma             # Book model
+  migrations/               # Versioned SQL migrations
+  seed.ts                   # Upserts book catalogue
+  data/books.ts             # Seed data
 
-constants/              # Centralised UI strings and config
-__fixtures__/books.ts   # Mock Book objects for tests
+constants/                  # Centralised UI strings and config
+types/                      # Shared TypeScript types
+__fixtures__/books.ts       # Mock Book objects for tests
 ```
 
 ---
