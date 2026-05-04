@@ -47,7 +47,7 @@ export function BookCatalogClient({ books }: BookCatalogClientProps) {
           <div className="flex flex-col gap-1">
             <p className="font-serif text-xl font-semibold text-gray-900">{UI.NO_RESULTS_TITLE}</p>
             <p className="text-muted-foreground text-sm">
-              {UI.NO_RESULTS_SUBTITLE} "{query.trim()}"
+              {UI.NO_RESULTS_SUBTITLE} &ldquo;{query.trim()}&rdquo;
             </p>
           </div>
           <button

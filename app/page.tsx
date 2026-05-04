@@ -8,7 +8,7 @@ export default function Home() {
       <div className="mb-4 md:mb-10">
         <h1 className="sr-only">BookHaven — Online Bookstore</h1>
         <h2 className="font-serif text-3xl leading-[30px] font-semibold text-gray-900 sm:text-4xl/9 md:text-5xl/12">
-          Let's start your <span className="text-orange-400">next chapter</span>
+          Let&apos;s start your <span className="text-orange-400">next chapter</span>
           <br />
           today.
         </h2>
