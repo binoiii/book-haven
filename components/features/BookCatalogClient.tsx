@@ -45,16 +45,16 @@ export function BookCatalogClient({ books }: BookCatalogClientProps) {
             <BookOpen className="h-7 w-7 text-orange-400" />
           </div>
           <div className="flex flex-col gap-1">
-            <p className="font-serif text-xl font-semibold text-gray-900">No results found</p>
+            <p className="font-serif text-xl font-semibold text-gray-900">{UI.NO_RESULTS_TITLE}</p>
             <p className="text-muted-foreground text-sm">
-              No books match &ldquo;{query.trim()}&rdquo;
+              {UI.NO_RESULTS_SUBTITLE} &ldquo;{query.trim()}&rdquo;
             </p>
           </div>
           <button
             onClick={clearQuery}
             className="rounded-full bg-orange-500 px-6 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-orange-600"
           >
-            Clear search
+            {UI.CLEAR_SEARCH}
           </button>
         </div>
       ) : (
